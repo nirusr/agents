@@ -52,9 +52,15 @@ public class MediaAgentsController {
     }
 
     @GetMapping(value = "list2")
-    public MediaAgentsList getMediaAgents3() {
+    public ResponseEntity<MediaAgentsList> getMediaAgents3() {
         MediaAgentsList l = new MediaAgentsList();
-        return mediaAgentService.getAllMediaAgents1();
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            System.out.println(mapper.writer().withoutRootName().writeValueAsString(mediaAgentService.getAllMediaAgents1()));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity(mediaAgentService.getAllMediaAgents1(), HttpStatus.OK);
 
 
     }

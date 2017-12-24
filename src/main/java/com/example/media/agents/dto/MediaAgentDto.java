@@ -1,22 +1,26 @@
 package com.example.media.agents.dto;
 
 import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 import javax.annotation.sql.DataSourceDefinition;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@JsonRootName("Caption")
 @JsonTypeName("Caption")
 @JsonTypeInfo(include= JsonTypeInfo.As.WRAPPER_OBJECT,use= JsonTypeInfo.Id.NAME)
-public class MediaAgentDto  {
+
+public class MediaAgentDto {
 
     private String type;
     private String name;
-    private String id;
-
     public MediaAgentDto() {
     }
+
+    private String id;
 
 
     public String getType() {

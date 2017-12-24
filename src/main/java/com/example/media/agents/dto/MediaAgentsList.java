@@ -4,12 +4,16 @@ import com.fasterxml.jackson.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+@JsonRootName("MediaList")
+public  class MediaAgentsList extends ArrayList<MediaAgentDto> {
+    private  List<MediaAgentDto> mediaAgentDtos = new ArrayList<>();
 
-public  class MediaAgentsList {
-    @JsonProperty("MList")
-    private  List<MediaAgentDto> mediaAgentDto = new ArrayList<>();
-    public void setMediaAgentDto(List<MediaAgentDto> mediaAgentDto) {
-        this.mediaAgentDto = mediaAgentDto;
+    public List<MediaAgentDto> getMediaAgentDtos() {
+        return mediaAgentDtos;
+    }
+
+    public void setMediaAgentDtos(List<MediaAgentDto> mediaAgentDtos) {
+        this.mediaAgentDtos = mediaAgentDtos;
     }
 }
 

@@ -1,10 +1,11 @@
 package com.example.media.agents.service;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.example.media.agents.dto.MediaAgentDto;
 import com.example.media.agents.dto.MediaAgentsList;
-import com.example.media.agents.dto.TranscriptDTO;
 import org.springframework.stereotype.Service;
 
+import javax.print.attribute.standard.Media;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,9 +23,9 @@ public class MediaAgentService {
 
     }
 
-    public ArrayList<MediaAgentDto> getAllMediaAgents() {
+    public List<MediaAgentDto> getAllMediaAgents() {
 
-        ArrayList<MediaAgentDto> mediaAgents = new ArrayList<>();
+        List<MediaAgentDto> mediaAgents = new ArrayList<>();
         MediaAgentDto mediaAgentDto  ;
 
         mediaAgentDto =  new MediaAgentDto();
@@ -33,25 +34,30 @@ public class MediaAgentService {
         mediaAgentDto.setType("Caption");
         mediaAgents.add(mediaAgentDto);
 
-        mediaAgentDto =  new MediaAgentDto();
-        mediaAgentDto.setId("2234");
-        mediaAgentDto.setName("1My Caption");
-        mediaAgentDto.setType("Caption");
+        MediaAgentDto mediaAgentDto1  ;
+        mediaAgentDto1 =  new MediaAgentDto();
+        mediaAgentDto1.setId("2234");
+        mediaAgentDto1.setName("1My Caption");
+        mediaAgentDto1.setType("Caption");
         mediaAgents.add(mediaAgentDto);
 
-        mediaAgentDto =  new MediaAgentDto();
-        mediaAgentDto.setId("3234");
-        mediaAgentDto.setName("1My Caption");
-        mediaAgentDto.setType("Caption");
+
+        MediaAgentDto mediaAgentDto2;
+        mediaAgentDto2 =  new MediaAgentDto();
+        mediaAgentDto2.setId("3234");
+        mediaAgentDto2.setName("1My Caption");
+        mediaAgentDto2.setType("Caption");
         mediaAgents.add(mediaAgentDto);
 
         return mediaAgents;
 
     }
 
+
     public MediaAgentsList getAllMediaAgents1() {
-        MediaAgentsList list = new MediaAgentsList();
-        ArrayList<MediaAgentDto> mediaAgents = new ArrayList<>();
+        MediaAgentsList result = new MediaAgentsList();
+
+        List<MediaAgentDto> mediaAgents = new ArrayList<>();
         MediaAgentDto mediaAgentDto  ;
 
         mediaAgentDto =  new MediaAgentDto();
@@ -60,54 +66,27 @@ public class MediaAgentService {
         mediaAgentDto.setType("Caption");
         mediaAgents.add(mediaAgentDto);
 
-        mediaAgentDto =  new MediaAgentDto();
-        mediaAgentDto.setId("2234");
-        mediaAgentDto.setName("1My Caption");
-        mediaAgentDto.setType("Caption");
+        MediaAgentDto mediaAgentDto1  ;
+        mediaAgentDto1 =  new MediaAgentDto();
+        mediaAgentDto1.setId("2234");
+        mediaAgentDto1.setName("1My Caption");
+        mediaAgentDto1.setType("Caption");
         mediaAgents.add(mediaAgentDto);
 
-        mediaAgentDto =  new MediaAgentDto();
-        mediaAgentDto.setId("3234");
-        mediaAgentDto.setName("1My Caption");
-        mediaAgentDto.setType("Caption");
+
+        MediaAgentDto mediaAgentDto2;
+        mediaAgentDto2 =  new MediaAgentDto();
+        mediaAgentDto2.setId("3234");
+        mediaAgentDto2.setName("1My Caption");
+        mediaAgentDto2.setType("Caption");
         mediaAgents.add(mediaAgentDto);
 
-        list.setMediaAgentDto(mediaAgents);
-        return list;
+        //result.setMediaAgentDtos(mediaAgents);
+        result.addAll(mediaAgents);
+        System.out.println(result.getMediaAgentDtos());
+        return result;
 
 
     }
-
-    public ArrayList<TranscriptDTO> getTransacript() {
-
-        ArrayList<TranscriptDTO> transcriptDTOS = new ArrayList<>();
-        TranscriptDTO transcriptDTO  ;
-
-        transcriptDTO =  new TranscriptDTO();
-        transcriptDTO.setId("1234");
-        transcriptDTO.setName("1My Caption");
-        transcriptDTO.setType("Transcript");
-        transcriptDTOS.add(transcriptDTO);
-
-        transcriptDTO =  new TranscriptDTO();
-        transcriptDTO.setId("2234");
-        transcriptDTO.setName("1My Caption");
-        transcriptDTO.setType("Transcript");
-        transcriptDTOS.add(transcriptDTO);
-
-
-        transcriptDTO =  new TranscriptDTO();
-        transcriptDTO.setId("3234");
-        transcriptDTO.setName("1My Caption");
-        transcriptDTO.setType("Transcript");
-        transcriptDTOS.add(transcriptDTO);
-
-
-
-        return transcriptDTOS;
-
-    }
-
 }
-
 

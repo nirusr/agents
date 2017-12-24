@@ -6,6 +6,7 @@ import com.example.media.agents.service.MediaAgentService;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -51,7 +52,7 @@ public class MediaAgentsController {
 
     }
 
-    @GetMapping(value = "list2")
+    @GetMapping(value = "list2", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<MediaAgentsList> getMediaAgents3() {
         MediaAgentsList l = new MediaAgentsList();
         ObjectMapper mapper = new ObjectMapper();
@@ -61,6 +62,24 @@ public class MediaAgentsController {
             e.printStackTrace();
         }
         return new ResponseEntity(mediaAgentService.getAllMediaAgents1(), HttpStatus.OK);
+
+
+    }
+
+    @GetMapping(value = "list3", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getMediaAgents4() {
+
+        ObjectMapper mapper = new ObjectMapper();
+        String str = "";
+        try {
+            System.out.println(mapper.writer().withoutRootName().writeValueAsString(mediaAgentService.getAllMediaAgents1()));
+            str = mapper.writer().withoutRootName().writeValueAsString(mediaAgentService.getAllMediaAgents1());
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+
+        return str;
 
 
     }

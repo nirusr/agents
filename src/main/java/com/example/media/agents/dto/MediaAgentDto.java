@@ -7,16 +7,17 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @JsonTypeName("Caption")
 @JsonTypeInfo(include= JsonTypeInfo.As.WRAPPER_OBJECT,use= JsonTypeInfo.Id.NAME)
-public class MediaAgentDto {
+public class MediaAgentDto  {
 
     private String type;
     private String name;
     private String id;
+
     public MediaAgentDto() {
     }
+
 
     public String getType() {
         return type;

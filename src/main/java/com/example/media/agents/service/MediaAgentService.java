@@ -154,5 +154,44 @@ public class MediaAgentService {
 
         return bMediAgents;
     }
+
+    public BMediaAgentsList getAllMediaAgents_By_List() {
+
+        BCaptionDTO  bCaptionDTO;
+        BTransacriptDTO bTransacriptDTO;
+        BSlideExtractionDTO bSlideExtractionDTO;
+        List<BMediAgents> bMediAgents = new ArrayList<>();
+
+
+        bCaptionDTO = new BCaptionDTO();
+        bCaptionDTO.setName("Captioning my speach-1-B");
+        bCaptionDTO.setId("C112345-B");
+        bCaptionDTO.setType("Caption-B");
+        bCaptionDTO.setPhrase("Hello how are you-S");
+        bMediAgents.add(bCaptionDTO);
+
+
+        bTransacriptDTO = new BTransacriptDTO();
+        bTransacriptDTO.setName("My Transcript-1-B");
+        bTransacriptDTO.setId("T1ABCD-B");
+        bTransacriptDTO.setType("Transcript-B");
+        bTransacriptDTO.setTranscriptSubType("Powerpoint slides-S");
+        bMediAgents.add(bTransacriptDTO);
+
+        bSlideExtractionDTO = new BSlideExtractionDTO();
+        bSlideExtractionDTO.setName("My Slide Extractions of Speach1-B");
+        bSlideExtractionDTO.setId("S1ABCD-B");
+        bSlideExtractionDTO.setName("SlideExtraction-B");
+        bSlideExtractionDTO.setSlideLength("30 Min-S");
+        bMediAgents.add(bSlideExtractionDTO);
+        System.out.println(bCaptionDTO.getPhrase());
+
+        BMediaAgentsList bMediaAgentsList = new BMediaAgentsList();
+        bMediaAgentsList.addAll(bMediAgents);
+        return bMediaAgentsList;
+
+
+
+    }
 }
 

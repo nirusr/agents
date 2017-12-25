@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 @JsonRootName("MediaList")
-public  class MediaAgentsList extends ArrayList<MediaAgentDto> {
+public  class MediaAgentsListDTO extends ArrayList<MediaAgentDto> {
     private  List<MediaAgentDto> mediaAgentDtos = new ArrayList<>();
 
     public List<MediaAgentDto> getMediaAgentDtos() {

@@ -1,12 +1,11 @@
 package com.example.media.agents.controller;
 
 import com.example.media.agents.dto.MediaAgentDto;
-import com.example.media.agents.dto.MediaAgentsList;
+import com.example.media.agents.dto.MediaAgents;
+import com.example.media.agents.dto.MediaAgentsListDTO;
 import com.example.media.agents.service.MediaAgentService;
-import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -53,8 +52,8 @@ public class MediaAgentsController {
     }
 
     @GetMapping(value = "list2", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MediaAgentsList> getMediaAgents3() {
-        MediaAgentsList l = new MediaAgentsList();
+    public ResponseEntity<MediaAgentsListDTO> getMediaAgents3() {
+        MediaAgentsListDTO l = new MediaAgentsListDTO();
         ObjectMapper mapper = new ObjectMapper();
         try {
             System.out.println(mapper.writer().withoutRootName().writeValueAsString(mediaAgentService.getAllMediaAgents1()));
@@ -84,5 +83,10 @@ public class MediaAgentsController {
 
     }
 
+    @GetMapping(value = "list4")
+    public ResponseEntity<List<MediaAgents>> getAllMediaAgents5() {
+        return new ResponseEntity(mediaAgentService.getAllMediaAgents_By_Interface(), HttpStatus.OK);
+
+    }
 
 }

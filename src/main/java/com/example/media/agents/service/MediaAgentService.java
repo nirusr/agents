@@ -1,11 +1,8 @@
 package com.example.media.agents.service;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-import com.example.media.agents.dto.MediaAgentDto;
-import com.example.media.agents.dto.MediaAgentsList;
+import com.example.media.agents.dto.*;
 import org.springframework.stereotype.Service;
 
-import javax.print.attribute.standard.Media;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,8 +51,8 @@ public class MediaAgentService {
     }
 
 
-    public MediaAgentsList getAllMediaAgents1() {
-        MediaAgentsList result = new MediaAgentsList();
+    public MediaAgentsListDTO getAllMediaAgents1() {
+        MediaAgentsListDTO result = new MediaAgentsListDTO();
 
         List<MediaAgentDto> mediaAgents = new ArrayList<>();
         MediaAgentDto mediaAgentDto  ;
@@ -88,5 +85,40 @@ public class MediaAgentService {
 
 
     }
-}
+
+    public List<MediaAgents> getAllMediaAgents_By_Interface() {
+
+        List<MediaAgents> list = new ArrayList<>();
+        TranscriptDTO transcriptDTO;
+        SlideExtractionDTO slideExtractionDTO;
+
+        //1
+        transcriptDTO = new TranscriptDTO();
+        transcriptDTO.setName("My Transcript1");
+        transcriptDTO.setId("123");
+        transcriptDTO.setType("TRANSCRIPT Type");
+        list.add(transcriptDTO);
+
+        transcriptDTO = new TranscriptDTO();
+        transcriptDTO.setName("My Transcript2");
+        transcriptDTO.setId("223");
+        transcriptDTO.setType("TRANSCRIPT Type");
+        list.add(transcriptDTO);
+
+        slideExtractionDTO = new SlideExtractionDTO();
+        slideExtractionDTO.setName("My Slide Extraction1");
+        slideExtractionDTO.setId("1234");
+        slideExtractionDTO.setType("TRANSCRIPT");
+        list.add(slideExtractionDTO);
+
+        slideExtractionDTO = new SlideExtractionDTO();
+        slideExtractionDTO.setName("My Slide Extraction2");
+        slideExtractionDTO.setId("2234");
+        slideExtractionDTO.setType("TRANSCRIPT");
+        list.add(slideExtractionDTO);
+        System.out.println(list.size());
+        return list;
+
+    }
+ }
 

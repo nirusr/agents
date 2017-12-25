@@ -9,44 +9,41 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
 
-public class TranscriptDTO {
-    @JsonIgnore
-    private static String type;
+public class TranscriptDTO implements MediaAgents{
 
-    private static String name;
-    private static String id;
+    private  String type;
+    private  String name;
 
-
-
-    public static String getType() {
+    public String getType() {
         return type;
     }
 
-    public static String getName() {
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public static String getId() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public static void setType(String type) {
-        TranscriptDTO.type = type;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public static void setName(String name) {
-        TranscriptDTO.name = name;
-    }
+    private  String id;
 
-    public static void setId(String id) {
-        TranscriptDTO.id = id;
-    }
 
-    @JsonAnyGetter
-    public Map<String, Object> any() {
 
-        return Collections.singletonMap(name.getClass().getName(), name );
 
-    }
+
+
 }
 

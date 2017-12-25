@@ -1,5 +1,6 @@
 package com.example.media.agents.controller;
 
+import com.example.media.agents.dto.BMediAgents;
 import com.example.media.agents.dto.MediaAgentDto;
 import com.example.media.agents.dto.MediaAgents;
 import com.example.media.agents.dto.MediaAgentsListDTO;
@@ -85,8 +86,13 @@ public class MediaAgentsController {
 
     @GetMapping(value = "list4")
     public ResponseEntity<List<MediaAgents>> getAllMediaAgents5() {
+        mediaAgentService.getAllMediaAgents_By_Super();
         return new ResponseEntity(mediaAgentService.getAllMediaAgents_By_Interface(), HttpStatus.OK);
 
+    }
+    @GetMapping(value = "list5")
+    public ResponseEntity<List<BMediAgents>> getAllMediaAgents6() {
+        return new ResponseEntity(mediaAgentService.getAllMediaAgents_By_Super(), HttpStatus.OK);
     }
 
 }

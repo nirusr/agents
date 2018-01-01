@@ -1,6 +1,8 @@
 package com.example.media.agents.service;
 
 import com.example.media.agents.dto.*;
+import com.example.media.agents.repository.MediaAgentsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,6 +10,8 @@ import java.util.List;
 
 @Service
 public class MediaAgentService {
+    @Autowired
+    private MediaAgentsRepository mediaAgentsRepository;
 
     public MediaAgentDto getMediaAgents() {
 
@@ -188,10 +192,25 @@ public class MediaAgentService {
 
         BMediaAgentsList bMediaAgentsList = new BMediaAgentsList();
         bMediaAgentsList.addAll(bMediAgents);
+
+        getAll();
+
+
         return bMediaAgentsList;
 
 
 
+    }
+
+    public BMediaAgentsList getAll() {
+        Iterable<com.example.media.agents.model.MediaAgents> mediaAgents;
+        mediaAgents = mediaAgentsRepository.findAll();
+
+        for ( com.example.media.agents.model.MediaAgents ele : mediaAgents) {
+                System.out.println(ele.getCallId() + ", " + ele.getMediaAgentId() + "," +
+                        ele.getMediaAgentType() + "," + ele.getCreatedAt() + ", " + ele.getUserId());
+        }
+        return null;
     }
 }
 
